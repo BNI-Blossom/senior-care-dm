@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#f7f4ef">
+  <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+    <rect width="1200" height="800" fill="#f7f4ef"/>
+    <circle cx="600" cy="330" r="120" fill="#dcefe1"/>
+    <path d="M600 260c-40-30-80-10-80 40 0 55 50 100 80 130 30-30 80-75 80-130 0-50-40-70-80-40z" fill="#4f9d6e"/>
+    <rect x="420" y="520" width="360" height="26" rx="13" fill="#cfe6d6"/>
+    <rect x="480" y="566" width="240" height="20" rx="10" fill="#d9e6df"/>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background: oklch(0.98 0.008 75);
+      color: oklch(0.24 0.02 60);
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: oklch(0.5 0.1 230); text-decoration: underline; }
+    a:hover { color: oklch(0.42 0.1 230); }
+    button { font-family: inherit; cursor: pointer; }
+    input { font-family: inherit; }
+    ::placeholder { color: oklch(0.55 0.02 70); }
+  </style>
+</helmet>
+
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: oklch(0.98 0.008 75);">
+
+  <!-- Sticky header -->
+  <header style="position: sticky; top: 0; z-index: 20; background: oklch(0.995 0.005 75); border-bottom: 1px solid oklch(0.9 0.01 70); padding: 16px 20px; display: flex; align-items: center; gap: 12px; min-height: 64px;">
+    <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+      <div style="width: 40px; height: 40px; border-radius: 12px; background: oklch(0.55 0.09 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 11z"></path>
+        </svg>
+      </div>
+      <div style="font-size: 20px; font-weight: 700; line-height: 1.3;">銀髮服務導航</div>
+    </sc-if>
+    <sc-if value="{{ isNotHome }}" hint-placeholder-val="{{ false }}">
+      <button onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 8px; background: none; border: none; padding: 8px 4px; font-size: 18px; font-weight: 500; color: oklch(0.24 0.02 60); min-height: 44px;">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M15 18l-6-6 6-6"></path>
+        </svg>
+        返回
+      </button>
+    </sc-if>
+  </header>
+
+  <!-- HOME VIEW -->
+  <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
+    <main data-screen-label="首頁" style="flex: 1; padding: 28px 20px 60px; max-width: 720px; width: 100%; margin: 0 auto;">
+
+      <!-- Hero -->
+      <section style="margin-bottom: 28px;">
+        <h1 style="font-size: 34px; line-height: 1.35; font-weight: 900; margin: 0 0 12px; color: oklch(0.22 0.02 60); text-wrap: pretty;">
+          銀髮服務導航<br>找到最適合您家庭的照護資源
+        </h1>
+        <p style="font-size: 19px; line-height: 1.7; font-weight: 500; color: oklch(0.4 0.02 60); margin: 0; text-wrap: pretty;">
+          不知道該找誰？<br>依照您的需求，快速找到合適的服務。
+        </p>
+      </section>
+
+      <!-- Search -->
+      <section style="margin-bottom: 28px;">
+        <div style="position: relative; display: flex; align-items: center;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="oklch(0.5 0.02 70)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 18px; pointer-events: none;">
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="M21 21l-4.3-4.3"></path>
+          </svg>
+          <input ref="{{ searchRef }}" onInput="{{ handleSearch }}" type="text" placeholder="搜尋服務，例如：復健、送餐" style="width: 100%; height: 60px; padding: 0 20px 0 52px; font-size: 18px; border-radius: 18px; border: 2px solid oklch(0.9 0.01 70); background: white; color: oklch(0.24 0.02 60); outline: none;"/>
+        </div>
+      </section>
+
+      <!-- Category cards -->
+      <section ref="{{ cardsRef }}" style="display: grid; grid-template-columns: 1fr; gap: 18px;">
+
+        <div data-search="長照溝通 與外籍看護溝通 AI 翻譯工具" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">長照溝通</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">與外籍看護溝通、AI 翻譯工具</p>
+            </div>
+          </div>
+          <button onClick="{{ openLingoWave }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <div data-search="居家照護 居服員 照護服務 陪伴照顧" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 11.5L12 4l9 7.5"></path>
+                <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">居家照護</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">居服員、照護服務、陪伴照顧</p>
+            </div>
+          </div>
+          <button onClick="{{ openGeneric1 }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <div data-search="出院準備 出院後照護安排與資源" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="6" width="16" height="14" rx="2"></rect>
+                <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                <path d="M12 10v6"></path>
+                <path d="M9 13h6"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">出院準備</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">出院後照護安排與資源</p>
+            </div>
+          </div>
+          <button onClick="{{ openGeneric2 }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <div data-search="復健與物理治療 居家復健 物理治療" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="6" cy="6" r="2.2"></circle>
+                <circle cx="18" cy="18" r="2.2"></circle>
+                <path d="M7.6 7.6L11 11"></path>
+                <path d="M13 13l3.4 3.4"></path>
+                <path d="M11 11a3 3 0 0 0 0 4.2"></path>
+                <path d="M13 13a3 3 0 0 0 0-4.2"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">復健與物理治療</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">居家復健、物理治療</p>
+            </div>
+          </div>
+          <button onClick="{{ openGeneric3 }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <div data-search="營養與送餐 送餐 營養照護" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 11a8 8 0 0 0 16 0z"></path>
+                <path d="M3 11h18"></path>
+                <path d="M12 11V5"></path>
+                <path d="M9 5c0-1.2.8-2 1.6-2.8"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">營養與送餐</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">送餐、營養照護</p>
+            </div>
+          </div>
+          <button onClick="{{ openGeneric4 }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <div data-search="法律與財務 長照規劃 信託 資產安排" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 3v18"></path>
+                <path d="M5 7h14"></path>
+                <path d="M5 7l-3 6a3 3 0 0 0 6 0z"></path>
+                <path d="M19 7l-3 6a3 3 0 0 0 6 0z"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">法律與財務</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">長照規劃、信託、資產安排</p>
+            </div>
+          </div>
+          <button onClick="{{ openGeneric5 }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <div data-search="銀髮健康 牙科 聽力 輔具" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10z"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">銀髮健康</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">牙科、聽力、輔具</p>
+            </div>
+          </div>
+          <button onClick="{{ openGeneric6 }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
+        <p ref="{{ noResultsRef }}" style="display: none; text-align: center; font-size: 17px; color: oklch(0.5 0.02 70); padding: 20px 0;">找不到符合的服務，請換個關鍵字試試。</p>
+
+      </section>
+    </main>
+
+    <!-- Footer / provider CTA -->
+    <footer style="background: oklch(0.95 0.015 150); border-top: 1px solid oklch(0.9 0.02 150); padding: 32px 20px 44px;">
+      <div style="max-width: 720px; margin: 0 auto;">
+        <h3 style="font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: oklch(0.4 0.06 150); margin: 0 0 8px;">我是銀髮服務業者</h3>
+        <p style="font-size: 19px; font-weight: 500; line-height: 1.6; margin: 0 0 18px; color: oklch(0.24 0.02 60);">加入銀髮服務導航</p>
+        <button style="width: 100%; height: 58px; border-radius: 16px; border: 2px solid oklch(0.4 0.09 150); background: transparent; color: oklch(0.35 0.09 150); font-size: 19px; font-weight: 700;">申請加入</button>
+      </div>
+    </footer>
+  </sc-if>
+
+  <!-- DETAIL: 長照溝通 / LingoWave -->
+  <sc-if value="{{ isLingoWave }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="長照溝通詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+      <div style="width: 64px; height: 64px; border-radius: 18px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+        </svg>
+      </div>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">長照溝通</h1>
+      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+        透過 AI 即時翻譯，降低家屬與外籍看護之間的語言隔閡，讓遠距照護更加安心。
+      </p>
+
+      <section style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 28px; margin-bottom: 28px;">
+        <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+        <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">LingoWave</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          AI 翻譯 App，協助家庭與外籍看護跨語言溝通。
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 14px;">
+          <button style="width: 100%; height: 58px; border-radius: 16px; border: none; background: oklch(0.24 0.02 60); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.1 1.2-.4 2.4-1.1 3.3-.8.9-2 1.6-3.2 1.5-.1-1.2.5-2.5 1.2-3.3.8-.9 2.1-1.5 3.1-1.5zM20 17.2c-.5 1.2-.8 1.7-1.5 2.7-1 1.4-2.3 3.1-4 3.1-1.5 0-1.9-1-3.9-1s-2.5 1-4 1c-1.7 0-3-1.6-4-3-2.7-3.9-3-8.4-1.3-10.8 1.2-1.7 3-2.7 4.7-2.7 1.7 0 2.8 1 4.2 1 1.4 0 2.2-1 4.2-1 1.5 0 3.1.8 4.3 2.2-3.8 2.1-3.2 7.5.3 8.5z"/></svg>
+            下載 iPhone App
+          </button>
+          <button style="width: 100%; height: 58px; border-radius: 16px; border: 2px solid oklch(0.24 0.02 60); background: transparent; color: oklch(0.24 0.02 60); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 6.5l1.8-3.1a.6.6 0 0 0-1-.6l-1.8 3.2a10 10 0 0 0-8 0L6.7 2.8a.6.6 0 1 0-1 .6l1.8 3.1A9 9 0 0 0 3 14h18a9 9 0 0 0-3.5-7.5zM8.5 11.2a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM3 15v4.5A2.5 2.5 0 0 0 5.5 22h.3V15H3zm15.2 0V22h.3a2.5 2.5 0 0 0 2.5-2.5V15h-2.8zM7.8 15v8h8.4v-8H7.8z"/></svg>
+            下載 Android App
+          </button>
+        </div>
+      </section>
+
+      <section style="background: oklch(0.95 0.015 150); border-radius: 22px; padding: 26px; text-align: center;">
+        <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 14px;">聯絡我們</h3>
+        <button style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 18px; font-weight: 700;">聯絡客服人員</button>
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- DETAIL: generic service page -->
+  <sc-if value="{{ isGeneric }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="服務詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">{{ genericTitle }}</h1>
+      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">{{ genericDesc }}</p>
+
+      <section style="background: oklch(0.95 0.015 150); border-radius: 22px; padding: 26px; text-align: center;">
+        <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 14px;">聯絡我們</h3>
+        <button style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 18px; font-weight: 700;">聯絡客服人員</button>
+      </section>
+    </main>
+  </sc-if>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { view: 'home', genericId: null };
+
+  goHome = () => { this.setState({ view: 'home', genericId: null }); };
+  openLingoWave = () => { this.setState({ view: 'lingowave' }); };
+  openGeneric = (id) => { this.setState({ view: 'generic', genericId: id }); };
+  openGeneric1 = () => this.openGeneric(1);
+  openGeneric2 = () => this.openGeneric(2);
+  openGeneric3 = () => this.openGeneric(3);
+  openGeneric4 = () => this.openGeneric(4);
+  openGeneric5 = () => this.openGeneric(5);
+  openGeneric6 = () => this.openGeneric(6);
+
+  genericData = {
+    1: { title: '居家照護', desc: '居服員、照護服務、陪伴照顧，協助家庭安排合適的居家照護人力。' },
+    2: { title: '出院準備', desc: '出院後照護安排與資源，協助銜接醫院與居家照護之間的照顧計畫。' },
+    3: { title: '復健與物理治療', desc: '居家復健、物理治療，由專業人員到府協助恢復生活機能。' },
+    4: { title: '營養與送餐', desc: '送餐、營養照護服務，確保長輩每日獲得均衡且合適的飲食。' },
+    5: { title: '法律與財務', desc: '長照規劃、信託、資產安排，協助家庭提早準備長期照護相關法律與財務事宜。' },
+    6: { title: '銀髮健康', desc: '牙科、聽力、輔具等銀髮專屬健康服務，照顧長輩的整體生活品質。' },
+  };
+
+  handleSearch = (e) => {
+    const q = (e.target.value || '').trim().toLowerCase();
+    const container = this.cardsRefEl;
+    if (!container) return;
+    const cards = container.querySelectorAll('[data-search]');
+    let visibleCount = 0;
+    cards.forEach((card) => {
+      const match = !q || card.getAttribute('data-search').toLowerCase().includes(q);
+      card.style.display = match ? '' : 'none';
+      if (match) visibleCount++;
+    });
+    if (this.noResultsEl) {
+      this.noResultsEl.style.display = visibleCount === 0 ? 'block' : 'none';
+    }
+  };
+
+  renderVals() {
+    const view = this.state.view;
+    const generic = this.state.genericId != null ? this.genericData[this.state.genericId] : null;
+    return {
+      isHome: view === 'home',
+      isNotHome: view !== 'home',
+      isLingoWave: view === 'lingowave',
+      isGeneric: view === 'generic',
+      genericTitle: generic ? generic.title : '',
+      genericDesc: generic ? generic.desc : '',
+      goHome: this.goHome,
+      openLingoWave: this.openLingoWave,
+      openGeneric1: this.openGeneric1,
+      openGeneric2: this.openGeneric2,
+      openGeneric3: this.openGeneric3,
+      openGeneric4: this.openGeneric4,
+      openGeneric5: this.openGeneric5,
+      openGeneric6: this.openGeneric6,
+      handleSearch: this.handleSearch,
+      searchRef: (el) => { this.searchEl = el; },
+      cardsRef: (el) => { this.cardsRefEl = el; },
+      noResultsRef: (el) => { this.noResultsEl = el; },
+    };
+  }
+}
+
+</script>
+</body>
+</html>
