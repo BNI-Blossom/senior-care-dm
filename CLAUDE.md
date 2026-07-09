@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A single-page prototype: **`index.html`** — a Traditional Chinese (zh-TW) directory app that helps families find senior-care services and connects them to real referral businesses (BNI members). It's a home screen with a search box + category cards, plus a dedicated detail screen per category that features one business's contact info.
+A single-page prototype: **`index.html`** — a Traditional Chinese (zh-TW) directory app that helps families find senior-care services and connects them to real referral businesses (BNI members). It's a home screen with a static list of category cards, plus a dedicated detail screen per category that features one or more of that business's products/contact info.
 
 There is no build system, package manager, linter, or test suite in this repo — just:
 
@@ -59,6 +59,6 @@ class Component extends DCLogic {
 
 ### This app's navigation model
 
-Everything lives in one `Component` with `state.view` acting as a simple router. There is no generic/shared detail template — each category has its own named view (`'home' | 'lingowave' | 'eplushome' | 'ltc-insurance' | 'beauty' | 'cancer-insurance' | 'bank' | 'dentist'`) and its own `open*` handler (e.g. `openBank`) that just calls `setState({ view: '...' })`. Screens are toggled via `sc-if` blocks in the template rather than any real router. The home screen is a static list of category cards — there is no search box and no provider sign-up CTA.
+Everything lives in one `Component` with `state.view` acting as a simple router. There is no generic/shared detail template — each category has its own named view (`'home' | 'lingowave' | 'eplushome' | 'insurance' | 'beauty' | 'bank' | 'dentist'`) and its own `open*` handler (e.g. `openBank`) that just calls `setState({ view: '...' })`. Screens are toggled via `sc-if` blocks in the template rather than any real router. The home screen is a static list of category cards — there is no search box and no provider sign-up CTA.
 
-Every detail screen follows the same layout: a big icon + `<h1>` title + one-paragraph intro, then a white "精選服務" card (a cropped banner from that business's ad in `assets/`, business name, one-line pitch, and a `tel:` call button), then a generic "聯絡我們" contact block. When adding a new category, follow this pattern: add a home-screen card and a new `open*` handler/state name, then add a matching `sc-if` detail block with its own `assets/*.jpg` banner and `tel:` number.
+Every detail screen follows the same layout: a big icon + `<h1>` title + one-paragraph intro, then a white "精選服務" card (a cropped banner from that business's ad in `assets/`, business name, one-line pitch, and a `tel:` call button), then a generic "聯絡我們" contact block. A category can feature more than one product from the same business — `insurance` stacks two 南山人壽 policy blocks (each with its own image/name/pitch) inside one card and shares a single `tel:` button at the bottom, since both share the same company phone number. When adding a new category, follow this pattern: add a home-screen card and a new `open*` handler/state name, then add a matching `sc-if` detail block with its own `assets/*.jpg` banner and `tel:` number.

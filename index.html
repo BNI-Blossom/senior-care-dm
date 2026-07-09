@@ -100,8 +100,8 @@
               </svg>
             </div>
             <div style="flex: 1;">
-              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">居家照護</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">居服員、照護服務、陪伴照顧</p>
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">居家安全監控</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">e+home 億加鴻 AI 智慧居家監控</p>
             </div>
           </div>
           <button onClick="{{ openEplusHome }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
@@ -116,11 +116,11 @@
               </svg>
             </div>
             <div style="flex: 1;">
-              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">長照保險規劃</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">南山人壽 長期照顧健康保險</p>
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">保險規劃</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">南山人壽 長照險、防癌險</p>
             </div>
           </div>
-          <button onClick="{{ openLtcInsurance }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+          <button onClick="{{ openInsurance }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
         <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
@@ -136,22 +136,6 @@
             </div>
           </div>
           <button onClick="{{ openBeauty }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
-        </div>
-
-        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
-          <div style="display: flex; align-items: center; gap: 16px;">
-            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
-                <path d="M8 12h2l1.5 3 2-6 1.5 3h2"></path>
-              </svg>
-            </div>
-            <div style="flex: 1;">
-              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">防癌健康保險</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">南山人壽 長青滿溢 防癌健康保險</p>
-            </div>
-          </div>
-          <button onClick="{{ openCancerInsurance }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
         <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
@@ -180,8 +164,8 @@
               </svg>
             </div>
             <div style="flex: 1;">
-              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">銀髮健康</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">牙科、聽力、輔具</p>
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">牙齒健康</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">永慶牙醫 植牙、假牙、牙周治療</p>
             </div>
           </div>
           <button onClick="{{ openDentist }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
@@ -229,16 +213,16 @@
     </main>
   </sc-if>
 
-  <!-- DETAIL: 居家照護 / e+home 億加鴻智慧監控 -->
+  <!-- DETAIL: 居家安全監控 / e+home 億加鴻智慧監控 -->
   <sc-if value="{{ isEplusHome }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="居家照護詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+    <main data-screen-label="居家安全監控詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div style="width: 64px; height: 64px; border-radius: 18px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 11.5L12 4l9 7.5"></path>
           <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"></path>
         </svg>
       </div>
-      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">居家照護</h1>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">居家安全監控</h1>
       <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
         用 AI 智慧監控守護長輩居家安全，即時感知危險、絕不偷看隱私，讓子女安心上班、長輩在家寬心。
       </p>
@@ -265,27 +249,44 @@
     </main>
   </sc-if>
 
-  <!-- DETAIL: 長照保險規劃 / 南山人壽 FLTC -->
-  <sc-if value="{{ isLtcInsurance }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="長照保險規劃詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+  <!-- DETAIL: 保險規劃 / 南山人壽 FLTC + SC -->
+  <sc-if value="{{ isInsurance }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="保險規劃詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div style="width: 64px; height: 64px; border-radius: 18px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V6l7-3z"></path>
           <path d="M9 12l2 2 4-4"></path>
         </svg>
       </div>
-      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">長照保險規劃</h1>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">保險規劃</h1>
       <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
-        及早規劃長期照顧財務保障，減輕家庭長照負擔，讓照護旅程更安心。
+        及早規劃長期照顧與癌症醫療保障，減輕家庭長照負擔，讓照護旅程更安心。
       </p>
 
       <section style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 0; margin-bottom: 28px; overflow: hidden;">
-        <img src="assets/insurance-2.jpg" alt="南山人壽 輕鬆陪伴長期照顧健康保險" style="width: 100%; height: 200px; object-fit: cover; object-position: top; display: block;">
-        <div style="padding: 28px;">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+        <div style="padding: 28px 28px 0;">
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150);">精選服務</div>
+        </div>
+
+        <div style="padding: 14px 28px 0;">
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">南山人壽「輕鬆陪伴」長期照顧健康保險 FLTC</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+        </div>
+        <img src="assets/insurance-2.jpg" alt="南山人壽 輕鬆陪伴長期照顧健康保險" style="width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; margin-top: 14px;">
+        <div style="padding: 20px 28px 0;">
+          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0;">
             提供長期照顧財務保障，及早規劃、輕鬆陪伴每一段長照旅程。
+          </p>
+        </div>
+
+        <div style="height: 1px; background: oklch(0.92 0.01 70); margin: 24px 28px;"></div>
+
+        <div style="padding: 0 28px 0;">
+          <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">南山人壽「長青滿溢」防癌健康保險 SC</h2>
+        </div>
+        <img src="assets/insurance-1.jpg" alt="南山人壽 長青滿溢防癌健康保險" style="width: 100%; height: 180px; object-fit: cover; object-position: top; display: block; margin-top: 14px;">
+        <div style="padding: 20px 28px 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+            提供癌症給付與外溢回饋保障，及早規劃醫療保障。
           </p>
           <a href="tel:0800020060" style="width: 100%; height: 58px; border-radius: 16px; border: none; background: oklch(0.24 0.02 60); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
@@ -336,42 +337,6 @@
     </main>
   </sc-if>
 
-  <!-- DETAIL: 防癌健康保險 / 南山人壽 長青滿溢 -->
-  <sc-if value="{{ isCancerInsurance }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="防癌健康保險詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
-      <div style="width: 64px; height: 64px; border-radius: 18px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
-          <path d="M8 12h2l1.5 3 2-6 1.5 3h2"></path>
-        </svg>
-      </div>
-      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">防癌健康保險</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
-        提早準備醫療保障，安心面對癌症風險，守護家人的健康與生活品質。
-      </p>
-
-      <section style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 0; margin-bottom: 28px; overflow: hidden;">
-        <img src="assets/insurance-1.jpg" alt="南山人壽 長青滿溢防癌健康保險" style="width: 100%; height: 200px; object-fit: cover; object-position: top; display: block;">
-        <div style="padding: 28px;">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
-          <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">南山人壽「長青滿溢」防癌健康保險 SC</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
-            提供癌症給付與外溢回饋保障，及早規劃醫療保障。
-          </p>
-          <a href="tel:0800020060" style="width: 100%; height: 58px; border-radius: 16px; border: none; background: oklch(0.24 0.02 60); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            撥打電話 0800-020-060
-          </a>
-        </div>
-      </section>
-
-      <section style="background: oklch(0.95 0.015 150); border-radius: 22px; padding: 26px; text-align: center;">
-        <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 14px;">聯絡我們</h3>
-        <a href="https://lin.ee/95a4T6s" target="_blank" rel="noopener" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none; box-sizing: border-box;">聯絡客服人員</a>
-      </section>
-    </main>
-  </sc-if>
-
   <!-- DETAIL: 法律與財務 / 第一銀行 以房養老 -->
   <sc-if value="{{ isBank }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="法律與財務詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
@@ -410,17 +375,17 @@
     </main>
   </sc-if>
 
-  <!-- DETAIL: 銀髮健康 / 永慶牙醫診所 -->
+  <!-- DETAIL: 牙齒健康 / 永慶牙醫診所 -->
   <sc-if value="{{ isDentist }}" hint-placeholder-val="{{ false }}">
-    <main data-screen-label="銀髮健康詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+    <main data-screen-label="牙齒健康詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div style="width: 64px; height: 64px; border-radius: 18px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
         <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 21s-7-4.5-7-10a4.5 4.5 0 0 1 7-3.7A4.5 4.5 0 0 1 19 11c0 5.5-7 10-7 10z"></path>
         </svg>
       </div>
-      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">銀髮健康</h1>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">牙齒健康</h1>
       <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
-        牙科、聽力、輔具等銀髮專屬健康服務，照顧長輩的整體生活品質。
+        植牙、假牙、牙周治療等專業牙科照護，找回穩固咀嚼力與自信笑容。
       </p>
 
       <section style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 0; margin-bottom: 28px; overflow: hidden;">
@@ -455,9 +420,8 @@ class Component extends DCLogic {
   goHome = () => { this.setState({ view: 'home' }); };
   openLingoWave = () => { this.setState({ view: 'lingowave' }); };
   openEplusHome = () => { this.setState({ view: 'eplushome' }); };
-  openLtcInsurance = () => { this.setState({ view: 'ltc-insurance' }); };
+  openInsurance = () => { this.setState({ view: 'insurance' }); };
   openBeauty = () => { this.setState({ view: 'beauty' }); };
-  openCancerInsurance = () => { this.setState({ view: 'cancer-insurance' }); };
   openBank = () => { this.setState({ view: 'bank' }); };
   openDentist = () => { this.setState({ view: 'dentist' }); };
 
@@ -468,17 +432,15 @@ class Component extends DCLogic {
       isNotHome: view !== 'home',
       isLingoWave: view === 'lingowave',
       isEplusHome: view === 'eplushome',
-      isLtcInsurance: view === 'ltc-insurance',
+      isInsurance: view === 'insurance',
       isBeauty: view === 'beauty',
-      isCancerInsurance: view === 'cancer-insurance',
       isBank: view === 'bank',
       isDentist: view === 'dentist',
       goHome: this.goHome,
       openLingoWave: this.openLingoWave,
       openEplusHome: this.openEplusHome,
-      openLtcInsurance: this.openLtcInsurance,
+      openInsurance: this.openInsurance,
       openBeauty: this.openBeauty,
-      openCancerInsurance: this.openCancerInsurance,
       openBank: this.openBank,
       openDentist: this.openDentist,
     };
