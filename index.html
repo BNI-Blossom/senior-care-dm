@@ -73,21 +73,10 @@
         </p>
       </section>
 
-      <!-- Search -->
-      <section style="margin-bottom: 28px;">
-        <div style="position: relative; display: flex; align-items: center;">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="oklch(0.5 0.02 70)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="position: absolute; left: 18px; pointer-events: none;">
-            <circle cx="11" cy="11" r="7"></circle>
-            <path d="M21 21l-4.3-4.3"></path>
-          </svg>
-          <input ref="{{ searchRef }}" onInput="{{ handleSearch }}" type="text" placeholder="搜尋服務，例如：復健、送餐" style="width: 100%; height: 60px; padding: 0 20px 0 52px; font-size: 18px; border-radius: 18px; border: 2px solid oklch(0.9 0.01 70); background: white; color: oklch(0.24 0.02 60); outline: none;"/>
-        </div>
-      </section>
-
       <!-- Category cards -->
-      <section ref="{{ cardsRef }}" style="display: grid; grid-template-columns: 1fr; gap: 18px;">
+      <section style="display: grid; grid-template-columns: 1fr; gap: 18px;">
 
-        <div data-search="長照溝通 與外籍看護溝通 AI 翻譯工具" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -102,7 +91,7 @@
           <button onClick="{{ openLingoWave }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <div data-search="居家照護 居服員 照護服務 陪伴照顧 e+home 億加鴻 智慧監控" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -118,7 +107,7 @@
           <button onClick="{{ openEplusHome }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <div data-search="長照保險規劃 出院準備 南山人壽 長期照顧健康保險 FLTC" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -134,7 +123,7 @@
           <button onClick="{{ openLtcInsurance }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <div data-search="熟齡美容保養 復健與物理治療 保養品 肌膚管理 RENE+CELL" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -149,7 +138,7 @@
           <button onClick="{{ openBeauty }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <div data-search="防癌健康保險 營養與送餐 南山人壽 癌症 健康保險" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -165,7 +154,7 @@
           <button onClick="{{ openCancerInsurance }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <div data-search="法律與財務 長照規劃 信託 資產安排 第一銀行 以房養老" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -183,7 +172,7 @@
           <button onClick="{{ openBank }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <div data-search="銀髮健康 牙科 聽力 輔具 永慶牙醫 植牙 假牙" style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.94 0.03 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
               <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -198,19 +187,8 @@
           <button onClick="{{ openDentist }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
-        <p ref="{{ noResultsRef }}" style="display: none; text-align: center; font-size: 17px; color: oklch(0.5 0.02 70); padding: 20px 0;">找不到符合的服務，請換個關鍵字試試。</p>
-
       </section>
     </main>
-
-    <!-- Footer / provider CTA -->
-    <footer style="background: oklch(0.95 0.015 150); border-top: 1px solid oklch(0.9 0.02 150); padding: 32px 20px 44px;">
-      <div style="max-width: 720px; margin: 0 auto;">
-        <h3 style="font-size: 15px; font-weight: 700; letter-spacing: 0.02em; color: oklch(0.4 0.06 150); margin: 0 0 8px;">我是銀髮服務業者</h3>
-        <p style="font-size: 19px; font-weight: 500; line-height: 1.6; margin: 0 0 18px; color: oklch(0.24 0.02 60);">加入銀髮服務導航</p>
-        <button style="width: 100%; height: 58px; border-radius: 16px; border: 2px solid oklch(0.4 0.09 150); background: transparent; color: oklch(0.35 0.09 150); font-size: 19px; font-weight: 700;">申請加入</button>
-      </div>
-    </footer>
   </sc-if>
 
   <!-- DETAIL: 長照溝通 / LingoWave -->
@@ -483,22 +461,6 @@ class Component extends DCLogic {
   openBank = () => { this.setState({ view: 'bank' }); };
   openDentist = () => { this.setState({ view: 'dentist' }); };
 
-  handleSearch = (e) => {
-    const q = (e.target.value || '').trim().toLowerCase();
-    const container = this.cardsRefEl;
-    if (!container) return;
-    const cards = container.querySelectorAll('[data-search]');
-    let visibleCount = 0;
-    cards.forEach((card) => {
-      const match = !q || card.getAttribute('data-search').toLowerCase().includes(q);
-      card.style.display = match ? '' : 'none';
-      if (match) visibleCount++;
-    });
-    if (this.noResultsEl) {
-      this.noResultsEl.style.display = visibleCount === 0 ? 'block' : 'none';
-    }
-  };
-
   renderVals() {
     const view = this.state.view;
     return {
@@ -519,10 +481,6 @@ class Component extends DCLogic {
       openCancerInsurance: this.openCancerInsurance,
       openBank: this.openBank,
       openDentist: this.openDentist,
-      handleSearch: this.handleSearch,
-      searchRef: (el) => { this.searchEl = el; },
-      cardsRef: (el) => { this.cardsRefEl = el; },
-      noResultsRef: (el) => { this.noResultsEl = el; },
     };
   }
 }
