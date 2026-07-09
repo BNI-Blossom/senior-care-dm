@@ -10,7 +10,7 @@ There is no build system, package manager, linter, or test suite in this repo �
 
 - `index.html` — the app itself (markup + view logic). Deployed as-is via GitHub Pages (repo has a `.nojekyll` file and a `main`-branch/root Pages source; the file must stay named `index.html` for Pages to serve it as the default document).
 - `support.js` — a vendored runtime, **generated code, do not hand-edit** (see header comment: "GENERATED from dc-runtime/src/*.ts — do not edit. Rebuild with `cd dc-runtime && bun run build`"). The `dc-runtime` source project is not part of this repo, so there is no local way to rebuild it — treat `support.js` as read-only.
-- `assets/` — ad images/flyers from referral businesses (e.g. `bank.jpg`, `teeth.jpg`), each cropped into the "精選服務" card on that category's detail screen (see Navigation model below).
+- `assets/` — ad images/flyers from referral businesses (e.g. `bank.jpg`, `teeth.jpg`), each cropped into the "精選服務" card on that category's detail screen (see Navigation model below). Not every category has one — a business without supplied art gets a text-only card (see `inheritance`).
 
 ## Running it
 
@@ -59,6 +59,6 @@ class Component extends DCLogic {
 
 ### This app's navigation model
 
-Everything lives in one `Component` with `state.view` acting as a simple router. There is no generic/shared detail template — each category has its own named view (`'home' | 'lingowave' | 'eplushome' | 'insurance' | 'beauty' | 'bank' | 'dentist'`) and its own `open*` handler (e.g. `openBank`) that just calls `setState({ view: '...' })`. Screens are toggled via `sc-if` blocks in the template rather than any real router. The home screen is a static list of category cards — there is no search box and no provider sign-up CTA.
+Everything lives in one `Component` with `state.view` acting as a simple router. There is no generic/shared detail template — each category has its own named view (`'home' | 'lingowave' | 'eplushome' | 'insurance' | 'beauty' | 'bank' | 'dentist' | 'inheritance'`) and its own `open*` handler (e.g. `openBank`) that just calls `setState({ view: '...' })`. Screens are toggled via `sc-if` blocks in the template rather than any real router. The home screen is a static list of category cards — there is no search box and no provider sign-up CTA.
 
 Every detail screen follows the same layout: a big icon + `<h1>` title + one-paragraph intro, then a white "精選服務" card (a cropped banner from that business's ad in `assets/`, business name, one-line pitch, and a `tel:` call button), then a generic "聯絡我們" contact block. A category can feature more than one product from the same business — `insurance` stacks two 南山人壽 policy blocks (each with its own image/name/pitch) inside one card and shares a single `tel:` button at the bottom, since both share the same company phone number. When adding a new category, follow this pattern: add a home-screen card and a new `open*` handler/state name, then add a matching `sc-if` detail block with its own `assets/*.jpg` banner and `tel:` number.

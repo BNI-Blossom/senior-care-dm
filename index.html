@@ -171,6 +171,25 @@
           <button onClick="{{ openDentist }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
         </div>
 
+        <div style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px;">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div style="width: 56px; height: 56px; border-radius: 16px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+                <path d="M12 8v13"></path>
+                <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
+                <path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 8 12 8"></path>
+                <path d="M16.5 8a2.5 2.5 0 0 0 0-5C14.5 3 12 8 12 8"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">資產傳承規劃</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">退休理財與節稅傳承諮詢</p>
+            </div>
+          </div>
+          <button onClick="{{ openInheritance }}" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.5 0.1 230); color: white; font-size: 19px; font-weight: 700;">查看服務</button>
+        </div>
+
       </section>
     </main>
   </sc-if>
@@ -410,6 +429,42 @@
     </main>
   </sc-if>
 
+  <!-- DETAIL: 資產傳承規劃 / 資產傳承專家 洪睿宸 -->
+  <sc-if value="{{ isInheritance }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="資產傳承規劃詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+      <div style="width: 64px; height: 64px; border-radius: 18px; background: oklch(0.93 0.03 230); display: flex; align-items: center; justify-content: center; margin-bottom: 18px;">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="3" y="8" width="18" height="4" rx="1"></rect>
+          <path d="M12 8v13"></path>
+          <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
+          <path d="M7.5 8a2.5 2.5 0 0 1 0-5C9.5 3 12 8 12 8"></path>
+          <path d="M16.5 8a2.5 2.5 0 0 0 0-5C14.5 3 12 8 12 8"></path>
+        </svg>
+      </div>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">資產傳承規劃</h1>
+      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+        手握資產有尊嚴，子女繼承更和諧。專為長輩打造的退休理財與節稅傳承諮詢，讓您的資產給得安心，下一代拿得感恩。
+      </p>
+
+      <section style="background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 28px; margin-bottom: 28px;">
+        <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+        <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">資產傳承專家 洪睿宸</h2>
+        <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          退休理財與節稅傳承諮詢，協助長輩安心規劃資產、和諧交棒給下一代。
+        </p>
+        <a href="tel:0987323419" style="width: 100%; height: 58px; border-radius: 16px; border: none; background: oklch(0.24 0.02 60); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          撥打電話 0987-323-419
+        </a>
+      </section>
+
+      <section style="background: oklch(0.95 0.015 150); border-radius: 22px; padding: 26px; text-align: center;">
+        <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 14px;">聯絡我們</h3>
+        <a href="https://lin.ee/95a4T6s" target="_blank" rel="noopener" style="width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none; box-sizing: border-box;">聯絡客服人員</a>
+      </section>
+    </main>
+  </sc-if>
+
 </div>
 
 </x-dc>
@@ -424,6 +479,7 @@ class Component extends DCLogic {
   openBeauty = () => { this.setState({ view: 'beauty' }); };
   openBank = () => { this.setState({ view: 'bank' }); };
   openDentist = () => { this.setState({ view: 'dentist' }); };
+  openInheritance = () => { this.setState({ view: 'inheritance' }); };
 
   renderVals() {
     const view = this.state.view;
@@ -436,6 +492,7 @@ class Component extends DCLogic {
       isBeauty: view === 'beauty',
       isBank: view === 'bank',
       isDentist: view === 'dentist',
+      isInheritance: view === 'inheritance',
       goHome: this.goHome,
       openLingoWave: this.openLingoWave,
       openEplusHome: this.openEplusHome,
@@ -443,6 +500,7 @@ class Component extends DCLogic {
       openBeauty: this.openBeauty,
       openBank: this.openBank,
       openDentist: this.openDentist,
+      openInheritance: this.openInheritance,
     };
   }
 }
