@@ -9,6 +9,13 @@
 <meta property="og:title" content="銀髮服務導航">
 <meta property="og:description" content="幫助長輩家庭快速找到合適的照護、保險、財務與健康服務，一頁看懂各項服務並直接撥打電話聯絡。">
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%234f9d6e'/%3E%3Cpath d='M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 11z' fill='white'/%3E%3C/svg%3E">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6YWMZJ02BW"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6YWMZJ02BW');
+</script>
 <script src="./support.js"></script>
 <template id="__bundler_thumbnail" data-bg-color="#f7f4ef">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
@@ -512,6 +519,26 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   state = { view: 'home' };
+
+  componentDidMount() {
+    document.addEventListener('click', this.trackClick);
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('click', this.trackClick);
+  }
+
+  trackClick = (e) => {
+    if (typeof gtag !== 'function') return;
+    const el = e.target.closest('a, button, .category-card');
+    if (!el) return;
+    const label = (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 100);
+    gtag('event', 'click', {
+      event_category: 'engagement',
+      event_label: label,
+      screen: this.state.view,
+    });
+  };
 
   navigate = (view) => {
     this.setState({ view });
