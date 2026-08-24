@@ -105,6 +105,23 @@
       <!-- Category cards -->
       <section style="display: grid; grid-template-columns: 1fr; gap: 18px;">
 
+        <div class="category-card" onClick="{{ openNutritionist }}">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="icon-badge icon-badge-blue">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 8c-3.5 0-6 2.7-6 6.5S8.5 21 12 21s6-2.8 6-6.5S15.5 8 12 8z"></path>
+                <path d="M12 8c0-2 1.2-3.5 3-4"></path>
+                <path d="M9 5c1 0 2 .5 2.5 1.5"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">營養與飲食健康</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">商建祥營養師 肌少症預防、體重管理</p>
+            </div>
+          </div>
+          <button class="cta-btn cta-btn-blue">查看服務</button>
+        </div>
+
         <div class="category-card" onClick="{{ openLingoWave }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-green">
@@ -237,6 +254,43 @@
           <button class="cta-btn cta-btn-blue">查看服務</button>
         </div>
 
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- DETAIL: 營養與飲食健康 / 商建祥 營養師 -->
+  <sc-if value="{{ isNutritionist }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="營養與飲食健康詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+      <div class="detail-icon icon-badge-blue">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 8c-3.5 0-6 2.7-6 6.5S8.5 21 12 21s6-2.8 6-6.5S15.5 8 12 8z"></path>
+          <path d="M12 8c0-2 1.2-3.5 3-4"></path>
+          <path d="M9 5c1 0 2 .5 2.5 1.5"></path>
+        </svg>
+      </div>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">營養與飲食健康</h1>
+      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+        長輩吃得下卻顧不好營養，是肌少症與體重流失的常見主因。營養師陪您找出真正的健康盲點，用專業飲食調整取代盲目節食，簡單吃、也吃得對。
+      </p>
+
+      <section class="service-card">
+        <img src="assets/nutritionist.jpg" alt="商建祥 營養師 陪你好好生活" width="864" height="1821" class="service-img">
+        <div class="service-card-padded">
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">商建祥 營養師</h2>
+          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+            高考營養師、私人教練雙認證，提供對抗肌少症、改善體重流失、簡化飲食準備、營養補充規劃等專屬方案，陪長輩找回好體力。
+          </p>
+          <a href="https://line.me/R/ti/p/@867gsgld" target="_blank" rel="noopener noreferrer" class="call-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 4.35 3.6 7.98 8.46 8.67.33.07.78.22.9.5.1.26.07.66.03.92l-.15.9c-.04.26-.2 1.02.9.56 1.1-.47 5.92-3.48 8.07-5.96C21.68 14.6 22 12.77 22 10.8 22 5.94 17.52 2 12 2z"></path></svg>
+            加 LINE 預約諮詢
+          </a>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 14px;">有其他問題？</h3>
+        <a href="https://lin.ee/95a4T6s" target="_blank" rel="noopener noreferrer" class="contact-btn">聯絡銀髮服務導航</a>
       </section>
     </main>
   </sc-if>
@@ -602,6 +656,7 @@ class Component extends DCLogic {
   };
 
   goHome = () => this.navigate('home');
+  openNutritionist = () => this.navigate('nutritionist');
   openLingoWave = () => this.navigate('lingowave');
   openWorker = () => this.navigate('worker');
   openEplusHome = () => this.navigate('eplushome');
@@ -616,6 +671,7 @@ class Component extends DCLogic {
     return {
       isHome: view === 'home',
       isNotHome: view !== 'home',
+      isNutritionist: view === 'nutritionist',
       isLingoWave: view === 'lingowave',
       isWorker: view === 'worker',
       isEplusHome: view === 'eplushome',
@@ -625,6 +681,7 @@ class Component extends DCLogic {
       isDentist: view === 'dentist',
       isInheritance: view === 'inheritance',
       goHome: this.goHome,
+      openNutritionist: this.openNutritionist,
       openLingoWave: this.openLingoWave,
       openWorker: this.openWorker,
       openEplusHome: this.openEplusHome,
