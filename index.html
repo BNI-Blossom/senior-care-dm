@@ -53,22 +53,48 @@
     :focus-visible { outline: 3px solid var(--forest); outline-offset: 3px; }
 
     /* Shared component styles */
-    .category-card { background: white; border: 1.5px solid var(--forest); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; cursor: pointer; text-align: left; transition: background .15s; }
-    .category-card:hover { background: var(--butter); }
-    .icon-badge { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .wrap { max-width: 1040px; margin: 0 auto; padding: 0 24px; width: 100%; }
+    .hero { background: var(--forest); color: var(--cream); padding: 56px 0 64px; border-radius: 0 0 40px 40px; }
+    .eyebrow { display: inline-block; background: var(--butter); color: var(--forest); font-weight: 700; font-size: 16px; padding: 6px 16px; border-radius: 999px; margin-bottom: 22px; }
+    .hero-title { font-size: clamp(44px, 9vw, 84px); line-height: 1.12; font-weight: 900; margin: 0 0 18px; letter-spacing: -0.01em; }
+    .hero-sub { font-size: 22px; line-height: 1.6; margin: 0 0 30px; opacity: .9; }
+    .hero-link { display: inline-flex; align-items: center; height: 56px; padding: 0 30px; border-radius: 999px; background: var(--butter); color: var(--forest); font-size: 19px; font-weight: 700; text-decoration: none; }
+    .hero-link:hover { color: var(--forest-ink); background: white; }
+
+    .category-grid { display: grid; grid-template-columns: 1fr; counter-reset: c; }
+    .category-card { counter-increment: c; display: grid; grid-template-columns: auto 1fr; column-gap: 18px; row-gap: 14px; align-items: start; padding: 28px 10px; border: 0; border-bottom: 1.5px solid var(--forest); border-radius: 0; background: transparent; cursor: pointer; text-align: left; transition: background .15s; }
+    .category-card::before { content: counter(c, decimal-leading-zero); font-family: var(--serif); font-size: 44px; line-height: 1; font-weight: 900; color: var(--forest); opacity: .28; min-width: 64px; }
+    .category-card > div { grid-column: 2; }
+    .category-card:hover { background: var(--butter); border-radius: 22px; }
+    .category-card .cta-btn { grid-column: 2; justify-self: start; width: auto; padding: 0 28px; height: 50px; font-size: 17px; }
+    .category-card h2 { font-size: 26px !important; line-height: 1.3; }
+    .icon-badge { width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
     .icon-badge svg, .detail-icon svg { stroke: var(--forest); }
     .icon-badge-green { background: var(--butter); }
     .icon-badge-blue { background: #dfeadf; }
-    .cta-btn { width: 100%; height: 56px; border-radius: 999px; border: 1.5px solid var(--forest); font-size: 19px; font-weight: 700; }
+    .cta-btn { border-radius: 999px; border: 1.5px solid var(--forest); font-size: 19px; font-weight: 700; }
     .cta-btn-green { background: var(--forest); color: white; }
     .cta-btn-blue { background: transparent; color: var(--forest); }
-    .detail-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--butter); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-    .service-card { background: white; border: 1.5px solid var(--forest); border-radius: 22px; margin-bottom: 28px; overflow: hidden; }
+    @media (min-width: 900px) {
+      .category-grid { grid-template-columns: 1fr 1fr; column-gap: 56px; }
+    }
+
+    /* Detail screens */
+    main[data-screen-label$="詳情"] { max-width: 720px !important; padding-top: 40px !important; }
+    main[data-screen-label$="詳情"] h1 { font-size: clamp(36px, 7vw, 52px) !important; line-height: 1.2; margin-bottom: 20px !important; }
+    main[data-screen-label$="詳情"] > p { border-left: 5px solid var(--forest); padding-left: 20px; color: var(--forest-ink) !important; font-size: 20px !important; }
+    .detail-icon { width: 72px; height: 72px; border-radius: 50%; background: var(--butter); display: flex; align-items: center; justify-content: center; margin-bottom: 22px; }
+    .service-card { background: white; border: 1.5px solid var(--forest); border-radius: 28px; margin-bottom: 28px; overflow: hidden; }
     .service-card-padded { padding: 28px; }
+    .service-card-padded > div:first-child { display: inline-block; background: var(--butter); padding: 4px 14px; border-radius: 999px; }
     .service-img { width: 100%; height: auto; display: block; }
-    .call-btn { width: 100%; height: 58px; border-radius: 999px; border: none; background: var(--forest); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
-    .contact-section { background: var(--butter); border-radius: 22px; padding: 26px; text-align: center; }
-    .contact-btn { width: 100%; height: 56px; border-radius: 999px; border: 1.5px solid var(--forest); background: transparent; color: var(--forest); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .call-btn { width: 100%; height: 60px; border-radius: 999px; border: none; background: var(--forest); color: white; font-size: 19px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+    .call-btn:hover { color: white; background: var(--forest-ink); }
+    .contact-section { background: var(--butter); border-radius: 28px; padding: 30px; text-align: center; }
+    .contact-section h3 { font-family: var(--serif); font-size: 24px !important; }
+    .contact-btn { width: 100%; height: 56px; border-radius: 999px; border: 1.5px solid var(--forest); background: white; color: var(--forest); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+
+    .site-footer { background: var(--forest); color: var(--cream); padding: 40px 0; margin-top: auto; }
   </style>
 </helmet>
 
@@ -96,20 +122,21 @@
 
   <!-- HOME VIEW -->
   <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-    <main data-screen-label="首頁" style="flex: 1; padding: 28px 20px 60px; max-width: 720px; width: 100%; margin: 0 auto;">
+    <main data-screen-label="首頁" style="flex: 1; width: 100%;">
 
-      <!-- Hero -->
-      <section style="margin-bottom: 28px;">
-        <h1 style="font-size: 40px; line-height: 1.3; font-weight: 900; font-family: var(--serif); margin: 0 0 12px; color: var(--forest-ink); text-wrap: pretty;">
-          找到最適合的銀髮服務
-        </h1>
-        <p style="font-size: 19px; line-height: 1.7; font-weight: 500; color: var(--muted); margin: 0; text-wrap: pretty;">
-          長照、保險、財務、健康，通通在這裡
-        </p>
+      <!-- Hero band -->
+      <section class="hero">
+        <div class="wrap">
+          <div class="eyebrow">BNI 夥伴・在地推薦</div>
+          <h1 class="hero-title">找到最適合的<br>銀髮服務</h1>
+          <p class="hero-sub">長照、保險、財務、健康，通通在這裡</p>
+          <a href="#list" class="hero-link">瀏覽所有服務 ↓</a>
+        </div>
       </section>
 
+      <div class="wrap" id="list" style="padding-top: 20px; padding-bottom: 72px;">
       <!-- Category cards -->
-      <section style="display: grid; grid-template-columns: 1fr; gap: 18px;">
+      <section class="category-grid">
 
         <div class="category-card" onClick="{{ openSeminar }}">
           <div style="display: flex; align-items: center; gap: 16px;">
@@ -124,7 +151,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">泳沐青春 長照講師、樂齡玩具、教案設計</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-green">查看服務</button>
+          <button class="cta-btn cta-btn-green">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openNutritionist }}">
@@ -141,7 +168,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">商建祥營養師 肌少症預防、體重管理</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-blue">查看服務</button>
+          <button class="cta-btn cta-btn-blue">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openLingoWave }}">
@@ -156,7 +183,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">與外籍看護溝通、AI 翻譯工具</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-green">查看服務</button>
+          <button class="cta-btn cta-btn-green">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openWorker }}">
@@ -174,7 +201,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">協助家庭媒合外籍看護、幫傭</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-blue">查看服務</button>
+          <button class="cta-btn cta-btn-blue">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openEplusHome }}">
@@ -190,7 +217,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">e+home 億加鴻 AI 智慧居家監控</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-green">查看服務</button>
+          <button class="cta-btn cta-btn-green">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openInsurance }}">
@@ -206,7 +233,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">南山人壽 長照險、防癌險</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-blue">查看服務</button>
+          <button class="cta-btn cta-btn-blue">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openBeauty }}">
@@ -221,7 +248,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">韓國 RENE(+)CELL 肌膚保養</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-green">查看服務</button>
+          <button class="cta-btn cta-btn-green">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openBank }}">
@@ -239,7 +266,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">第一銀行 房屋逆向抵押貸款方案</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-blue">查看服務</button>
+          <button class="cta-btn cta-btn-blue">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openDentist }}">
@@ -254,7 +281,7 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">永慶牙醫 植牙、假牙、牙周治療</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-green">查看服務</button>
+          <button class="cta-btn cta-btn-green">查看服務 →</button>
         </div>
 
         <div class="category-card" onClick="{{ openInheritance }}">
@@ -273,10 +300,11 @@
               <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">退休理財與節稅傳承諮詢</p>
             </div>
           </div>
-          <button class="cta-btn cta-btn-blue">查看服務</button>
+          <button class="cta-btn cta-btn-blue">查看服務 →</button>
         </div>
 
       </section>
+      </div>
     </main>
   </sc-if>
 
@@ -680,6 +708,13 @@
       </section>
     </main>
   </sc-if>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div style="font-family: var(--serif); font-size: 22px; font-weight: 900; margin-bottom: 6px;">銀髮服務導航</div>
+      <div style="font-size: 16px; opacity: .8;">串連 BNI 夥伴，陪長輩與家人找到安心的服務</div>
+    </div>
+  </footer>
 
 </div>
 
