@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A single-page prototype: **`index.html`** — a Traditional Chinese (zh-TW) directory app that helps families find senior-care services and connects them to real referral businesses (BNI members). It's a home screen with a static list of category cards, plus a dedicated detail screen per category that features one or more of that business's products/contact info.
+A single-page prototype: **`index.html`** — a Traditional Chinese (zh-TW) directory app that helps families find senior-care services and connects them to real partner businesses. The home screen lists services in three groups; tapping one opens a detail sheet featuring that business's products and a fixed bottom contact bar.
 
 There is no build system, package manager, linter, or test suite in this repo — just:
 
@@ -57,14 +57,18 @@ class Component extends DCLogic {
 - `renderVals()` is called on every render; its return value is the single flat "vals" object the whole template resolves `{{ }}` expressions against — anything the template needs (booleans for `sc-if`, data for text, handlers for events, ref callbacks) must be returned from here.
 - There's exactly one `Component` class per `.dc.html` file/root.
 
-### This app's navigation model
+### This app's structure
 
-Everything lives in one `Component` with `state.view` acting as a simple router. There is no generic/shared detail template — each category has its own named view (`'home' | 'lingowave' | 'eplushome' | 'insurance' | 'beauty' | 'bank' | 'dentist' | 'inheritance'`) and its own `open*` handler (e.g. `openBank`), all routed through a single `navigate(view)` method that also does `window.scrollTo(0, 0)` — without that, switching views keeps whatever scroll position the home list was at, so a card near the bottom of the list would open its detail screen already scrolled past the title. Screens are toggled via `sc-if` blocks in the template rather than any real router. The home screen is a static list of category cards — there is no search box and no provider sign-up CTA.
+The home screen is data-driven. Everything lives in one `Component`: `services` (an object keyed by id) holds each category's title, home blurb, intro, `providers` (name, pitch, `imgs`) and `actions` (`tel` / `line` / `apple` / `android`); `groupDefs` groups the ids into the three home sections (照護與生活 / 健康 / 財務與保障). `renderVals()` flattens these into the `groups` / `detail` objects the template loops over with nested `sc-for`.
 
-Every detail screen follows the same layout: a big icon + `<h1>` title + one-paragraph intro, then a white "精選服務" card (the business's ad image from `assets/` shown uncropped, its name, a one-line pitch, and a `tel:` call button), then a `.contact-section` block labelled "有其他問題？" that links to the app's own LINE (`https://lin.ee/95a4T6s`) — deliberately worded/styled differently from the business's own `tel:` button above it so the two don't read as contacting the same party. A category can feature more than one image/product from the same business — `insurance` stacks the agent's business card (陳映錞, `insurance-3.jpg`) above two 南山人壽 policy blocks (each with its own image/name/pitch) inside one card, and `bank` stacks the branch rep's business card (劉佳蓉, `bank-2.jpg`) above the 第一銀行 ad. Both share a single `tel:` button at the bottom that dials the individual rep's own line rather than the company's generic hotline — for an extension number that means a comma in the `href` (`tel:0355963251,210`) to pause then dial the extension's DTMF tones.
+There are no per-category templates and no `navigate()` router. `state.openId` is `null` on the home screen; tapping a `.tile` calls `openService(id)`, which `history.pushState`s and renders one shared full-screen `.sheet` (back button, icon, `<h1>`, intro, provider cards with their `assets/` images shown uncropped, a "有其他問題？" block linking to the app's own LINE `https://lin.ee/95a4T6s`, and a fixed bottom `.actionbar`). `popstate`, Escape and the 返回 button all close it; `document.body.style.overflow` is locked while it is open.
 
-Repeated visual pieces are factored into shared CSS classes in the `<helmet>` `<style>` block rather than copy-pasted inline styles: `.category-card`, `.icon-badge` (+ `.icon-badge-green`/`.icon-badge-blue` color modifiers), `.cta-btn` (+ color modifiers), `.detail-icon`, `.service-card`/`.service-card-padded`, `.service-img`, `.call-btn`, `.contact-section`, `.contact-btn`. The category color (green/blue) alternates strictly down the home list — keep that alternation when adding or reordering cards.
+**Bottom action bar:** every service's contact buttons (phone and/or LINE, or app-store links for LingoWave) live in `.actionbar`, fixed at the bottom of the sheet so they are visible without scrolling. The app's own LINE stays in the body block, styled differently, so the two don't read as contacting the same party. A category can feature several providers/images (`insurance` and `bank` stack the rep's business card above the company ad) with one shared `tel:` action that dials the individual rep's line; for an extension use a comma in the `href` (`tel:0355963251,210`).
 
-The entire home-screen card (`.category-card`) carries the `onClick`, not just its `查看服務` button — the button has no handler of its own and relies on the click bubbling up from it to the card's `onClick`, so tapping anywhere on the card (icon, title, description) navigates, which matters for a senior-facing UI where a small button-only hit target is easy to miss.
+**Icons:** the template can't inject raw SVG, so icon markup lives in the `icons` map and `fillIcons()` writes it into every `<svg data-icon="key">` after each render. Add the key there when adding a service.
 
-When adding a new category, follow this pattern: add a home-screen `.category-card` (alternating color modifier) with a new `open*` handler/state name routed through `navigate()`, then add a matching `sc-if` detail block using the shared classes above, with its own `assets/*.jpg` banner (or `service-card-padded` for a text-only card) and `tel:` number.
+**Copy:** the site doesn't mention BNI anywhere in the UI — keep it that way.
+
+**Adding a category:** add an entry to `services`, its id to a `groupDefs` group, an icon in `icons`, and (if it has art) a downscaled `assets/*.jpg`.
+
+Responsive layout: tiles are a single-column list on phones; at ≥900px a sticky group nav appears on the left with a two-column tile grid on the right.
