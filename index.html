@@ -105,6 +105,22 @@
       <!-- Category cards -->
       <section style="display: grid; grid-template-columns: 1fr; gap: 18px;">
 
+        <div class="category-card" onClick="{{ openSeminar }}">
+          <div style="display: flex; align-items: center; gap: 16px;">
+            <div class="icon-badge icon-badge-green">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+            </div>
+            <div style="flex: 1;">
+              <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">長照講座與樂齡玩具</h2>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">泳沐青春 長照講師、樂齡玩具、教案設計</p>
+            </div>
+          </div>
+          <button class="cta-btn cta-btn-green">查看服務</button>
+        </div>
+
         <div class="category-card" onClick="{{ openNutritionist }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-blue">
@@ -254,6 +270,42 @@
           <button class="cta-btn cta-btn-blue">查看服務</button>
         </div>
 
+      </section>
+    </main>
+  </sc-if>
+
+  <!-- DETAIL: 長照講座與樂齡玩具 / 泳沐青春 7YMuYouth -->
+  <sc-if value="{{ isSeminar }}" hint-placeholder-val="{{ false }}">
+    <main data-screen-label="長照講座詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
+      <div class="detail-icon icon-badge-green">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path>
+                <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path>
+              </svg>
+      </div>
+      <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">長照講座與樂齡玩具</h1>
+      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+        不知道長照資源怎麼找、怎麼申請？讓專業講師用輕鬆有趣的方式，帶您和長輩認識照顧資源，把學習融入生活，從容迎接人生下半場。
+      </p>
+
+      <section class="service-card">
+        <img src="assets/7ymuyouth.jpg" alt="泳沐青春 7YMuYouth 長照講座與樂齡玩具" width="900" height="600" class="service-img">
+        <div class="service-card-padded">
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">泳沐青春 7YMuYouth</h2>
+          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+            樂齡玩具｜長照講師｜教案設計｜多元輔療。結合長照專業與樂齡玩具應用，透過多元課程、互動體驗及健康促進活動，從長照資源認識、服務申請指引到樂齡生活規劃，陪您善用照顧資源。玩出健康、學會照顧，陪你優雅變老，讓每個人生階段都能自在精彩。
+          </p>
+          <a href="https://lin.ee/ezec15h" target="_blank" rel="noopener noreferrer" class="call-btn">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 5.94 2 10.8c0 4.35 3.6 7.98 8.46 8.67.33.07.78.22.9.5.1.26.07.66.03.92l-.15.9c-.04.26-.2 1.02.9.56 1.1-.47 5.92-3.48 8.07-5.96C21.68 14.6 22 12.77 22 10.8 22 5.94 17.52 2 12 2z"></path></svg>
+            加 LINE 洽詢課程
+          </a>
+        </div>
+      </section>
+
+      <section class="contact-section">
+        <h3 style="font-size: 20px; font-weight: 700; margin: 0 0 14px;">有其他問題？</h3>
+        <a href="https://lin.ee/95a4T6s" target="_blank" rel="noopener noreferrer" class="contact-btn">聯絡銀髮服務導航</a>
       </section>
     </main>
   </sc-if>
@@ -656,6 +708,7 @@ class Component extends DCLogic {
   };
 
   goHome = () => this.navigate('home');
+  openSeminar = () => this.navigate('seminar');
   openNutritionist = () => this.navigate('nutritionist');
   openLingoWave = () => this.navigate('lingowave');
   openWorker = () => this.navigate('worker');
@@ -671,6 +724,7 @@ class Component extends DCLogic {
     return {
       isHome: view === 'home',
       isNotHome: view !== 'home',
+      isSeminar: view === 'seminar',
       isNutritionist: view === 'nutritionist',
       isLingoWave: view === 'lingowave',
       isWorker: view === 'worker',
@@ -681,6 +735,7 @@ class Component extends DCLogic {
       isDentist: view === 'dentist',
       isInheritance: view === 'inheritance',
       goHome: this.goHome,
+      openSeminar: this.openSeminar,
       openNutritionist: this.openNutritionist,
       openLingoWave: this.openLingoWave,
       openWorker: this.openWorker,
