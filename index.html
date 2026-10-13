@@ -8,7 +8,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="銀髮服務導航">
 <meta property="og:description" content="幫助長輩家庭快速找到合適的照護、保險、財務與健康服務，一頁看懂各項服務並直接撥打電話聯絡。">
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%234f9d6e'/%3E%3Cpath d='M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 11z' fill='white'/%3E%3C/svg%3E">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' rx='6' fill='%232e513e'/%3E%3Cpath d='M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 11z' fill='white'/%3E%3C/svg%3E">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-6YWMZJ02BW"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -17,11 +17,11 @@
   gtag('config', 'G-6YWMZJ02BW');
 </script>
 <script src="./support.js"></script>
-<template id="__bundler_thumbnail" data-bg-color="#f7f4ef">
+<template id="__bundler_thumbnail" data-bg-color="#fffef3">
   <svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
-    <rect width="1200" height="800" fill="#f7f4ef"/>
-    <circle cx="600" cy="330" r="120" fill="#dcefe1"/>
-    <path d="M600 260c-40-30-80-10-80 40 0 55 50 100 80 130 30-30 80-75 80-130 0-50-40-70-80-40z" fill="#4f9d6e"/>
+    <rect width="1200" height="800" fill="#fffef3"/>
+    <circle cx="600" cy="330" r="120" fill="#fff3b0"/>
+    <path d="M600 260c-40-30-80-10-80 40 0 55 50 100 80 130 30-30 80-75 80-130 0-50-40-70-80-40z" fill="#2e513e"/>
     <rect x="420" y="520" width="360" height="26" rx="13" fill="#cfe6d6"/>
     <rect x="480" y="566" width="240" height="20" rx="10" fill="#d9e6df"/>
   </svg>
@@ -32,54 +32,60 @@
 <helmet>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
   <style>
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
+    /* Palette from A1 ref "One Manor Place": forest green on warm cream, no shadows */
+    :root { --forest: #2e513e; --forest-ink: #1f3a2c; --cream: #fffef3; --butter: #fff3b0; --line: #e7e2c4; --muted: #5d6b61; --serif: "Noto Serif TC", "Songti TC", serif; }
     body {
       font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background: oklch(0.98 0.008 75);
-      color: oklch(0.24 0.02 60);
+      background: var(--cream);
+      color: var(--forest-ink);
       -webkit-font-smoothing: antialiased;
     }
-    a { color: oklch(0.5 0.1 230); text-decoration: underline; }
-    a:hover { color: oklch(0.42 0.1 230); }
+    h1, h2 { font-family: var(--serif); }
+    a { color: var(--forest); text-decoration: underline; }
+    a:hover { color: var(--forest-ink); }
     button { font-family: inherit; cursor: pointer; }
     input { font-family: inherit; }
-    ::placeholder { color: oklch(0.55 0.02 70); }
+    ::placeholder { color: var(--muted); }
+    :focus-visible { outline: 3px solid var(--forest); outline-offset: 3px; }
 
-    /* Shared component styles (deduplicated from repeated inline styles) */
-    .category-card { background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; cursor: pointer; text-align: left; }
-    .icon-badge { width: 56px; height: 56px; border-radius: 16px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .icon-badge-green { background: oklch(0.94 0.03 150); }
-    .icon-badge-blue { background: oklch(0.93 0.03 230); }
-    .cta-btn { width: 100%; height: 56px; border-radius: 16px; border: none; color: white; font-size: 19px; font-weight: 700; }
-    .cta-btn-green { background: oklch(0.55 0.09 150); }
-    .cta-btn-blue { background: oklch(0.5 0.1 230); }
-    .detail-icon { width: 64px; height: 64px; border-radius: 18px; display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
-    .service-card { background: white; border: 1px solid oklch(0.92 0.01 70); border-radius: 22px; margin-bottom: 28px; overflow: hidden; }
+    /* Shared component styles */
+    .category-card { background: white; border: 1.5px solid var(--forest); border-radius: 22px; padding: 26px; display: flex; flex-direction: column; gap: 14px; cursor: pointer; text-align: left; transition: background .15s; }
+    .category-card:hover { background: var(--butter); }
+    .icon-badge { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .icon-badge svg, .detail-icon svg { stroke: var(--forest); }
+    .icon-badge-green { background: var(--butter); }
+    .icon-badge-blue { background: #dfeadf; }
+    .cta-btn { width: 100%; height: 56px; border-radius: 999px; border: 1.5px solid var(--forest); font-size: 19px; font-weight: 700; }
+    .cta-btn-green { background: var(--forest); color: white; }
+    .cta-btn-blue { background: transparent; color: var(--forest); }
+    .detail-icon { width: 64px; height: 64px; border-radius: 50%; background: var(--butter); display: flex; align-items: center; justify-content: center; margin-bottom: 18px; }
+    .service-card { background: white; border: 1.5px solid var(--forest); border-radius: 22px; margin-bottom: 28px; overflow: hidden; }
     .service-card-padded { padding: 28px; }
     .service-img { width: 100%; height: auto; display: block; }
-    .call-btn { width: 100%; height: 58px; border-radius: 16px; border: none; background: oklch(0.24 0.02 60); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
-    .contact-section { background: oklch(0.95 0.015 150); border-radius: 22px; padding: 26px; text-align: center; }
-    .contact-btn { width: 100%; height: 56px; border-radius: 16px; border: none; background: oklch(0.55 0.09 150); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none; }
+    .call-btn { width: 100%; height: 58px; border-radius: 999px; border: none; background: var(--forest); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; }
+    .contact-section { background: var(--butter); border-radius: 22px; padding: 26px; text-align: center; }
+    .contact-btn { width: 100%; height: 56px; border-radius: 999px; border: 1.5px solid var(--forest); background: transparent; color: var(--forest); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; text-decoration: none; }
   </style>
 </helmet>
 
-<div style="min-height: 100vh; display: flex; flex-direction: column; background: oklch(0.98 0.008 75);">
+<div style="min-height: 100vh; display: flex; flex-direction: column; background: var(--cream);">
 
   <!-- Sticky header -->
-  <header style="position: sticky; top: 0; z-index: 20; background: oklch(0.995 0.005 75); border-bottom: 1px solid oklch(0.9 0.01 70); padding: 16px 20px; display: flex; align-items: center; gap: 12px; min-height: 64px;">
+  <header style="position: sticky; top: 0; z-index: 20; background: var(--cream); border-bottom: 1px solid var(--forest); padding: 16px 20px; display: flex; align-items: center; gap: 12px; min-height: 64px;">
     <sc-if value="{{ isHome }}" hint-placeholder-val="{{ true }}">
-      <div style="width: 40px; height: 40px; border-radius: 12px; background: oklch(0.55 0.09 150); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+      <div style="width: 40px; height: 40px; border-radius: 50%; background: var(--forest); display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 21c-4-3-8-6.5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 4.5-4 8-8 11z"></path>
         </svg>
       </div>
-      <div style="font-size: 20px; font-weight: 700; line-height: 1.3;">銀髮服務導航</div>
+      <div style="font-size: 20px; font-weight: 700; line-height: 1.3; font-family: var(--serif);">銀髮服務導航</div>
     </sc-if>
     <sc-if value="{{ isNotHome }}" hint-placeholder-val="{{ false }}">
-      <button onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 8px; background: none; border: none; padding: 8px 4px; font-size: 18px; font-weight: 500; color: oklch(0.24 0.02 60); min-height: 44px;">
+      <button onClick="{{ goHome }}" style="display: flex; align-items: center; gap: 8px; background: none; border: none; padding: 8px 4px; font-size: 18px; font-weight: 500; color: var(--forest-ink); min-height: 44px;">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M15 18l-6-6 6-6"></path>
         </svg>
@@ -94,10 +100,10 @@
 
       <!-- Hero -->
       <section style="margin-bottom: 28px;">
-        <h1 style="font-size: 34px; line-height: 1.35; font-weight: 900; margin: 0 0 12px; color: oklch(0.22 0.02 60); text-wrap: pretty;">
+        <h1 style="font-size: 40px; line-height: 1.3; font-weight: 900; font-family: var(--serif); margin: 0 0 12px; color: var(--forest-ink); text-wrap: pretty;">
           找到最適合的銀髮服務
         </h1>
-        <p style="font-size: 19px; line-height: 1.7; font-weight: 500; color: oklch(0.4 0.02 60); margin: 0; text-wrap: pretty;">
+        <p style="font-size: 19px; line-height: 1.7; font-weight: 500; color: var(--muted); margin: 0; text-wrap: pretty;">
           長照、保險、財務、健康，通通在這裡
         </p>
       </section>
@@ -108,14 +114,14 @@
         <div class="category-card" onClick="{{ openSeminar }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-green">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path>
                 <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path>
               </svg>
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">長照講座與樂齡玩具</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">泳沐青春 長照講師、樂齡玩具、教案設計</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">泳沐青春 長照講師、樂齡玩具、教案設計</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-green">查看服務</button>
@@ -124,7 +130,7 @@
         <div class="category-card" onClick="{{ openNutritionist }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-blue">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 8c-3.5 0-6 2.7-6 6.5S8.5 21 12 21s6-2.8 6-6.5S15.5 8 12 8z"></path>
                 <path d="M12 8c0-2 1.2-3.5 3-4"></path>
                 <path d="M9 5c1 0 2 .5 2.5 1.5"></path>
@@ -132,7 +138,7 @@
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">營養與飲食健康</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">商建祥營養師 肌少症預防、體重管理</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">商建祥營養師 肌少症預防、體重管理</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-blue">查看服務</button>
@@ -141,13 +147,13 @@
         <div class="category-card" onClick="{{ openLingoWave }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-green">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
               </svg>
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">長照溝通</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">與外籍看護溝通、AI 翻譯工具</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">與外籍看護溝通、AI 翻譯工具</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-green">查看服務</button>
@@ -156,7 +162,7 @@
         <div class="category-card" onClick="{{ openWorker }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-blue">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path>
                 <circle cx="9" cy="7" r="4"></circle>
                 <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -165,7 +171,7 @@
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">外勞仲介</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">協助家庭媒合外籍看護、幫傭</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">協助家庭媒合外籍看護、幫傭</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-blue">查看服務</button>
@@ -174,14 +180,14 @@
         <div class="category-card" onClick="{{ openEplusHome }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-green">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M3 11.5L12 4l9 7.5"></path>
                 <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"></path>
               </svg>
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">居家安全監控</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">e+home 億加鴻 AI 智慧居家監控</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">e+home 億加鴻 AI 智慧居家監控</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-green">查看服務</button>
@@ -190,14 +196,14 @@
         <div class="category-card" onClick="{{ openInsurance }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-blue">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 3l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V6l7-3z"></path>
                 <path d="M9 12l2 2 4-4"></path>
               </svg>
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">保險規劃</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">南山人壽 長照險、防癌險</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">南山人壽 長照險、防癌險</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-blue">查看服務</button>
@@ -206,13 +212,13 @@
         <div class="category-card" onClick="{{ openBeauty }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-green">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 2l2.4 6.8L21 11l-6.6 2.2L12 20l-2.4-6.8L3 11l6.6-2.2L12 2z"></path>
               </svg>
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">熟齡美容保養</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">韓國 RENE(+)CELL 肌膚保養</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">韓國 RENE(+)CELL 肌膚保養</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-green">查看服務</button>
@@ -221,7 +227,7 @@
         <div class="category-card" onClick="{{ openBank }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-blue">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 3v18"></path>
                 <path d="M5 7h14"></path>
                 <path d="M5 7l-3 6a3 3 0 0 0 6 0z"></path>
@@ -230,7 +236,7 @@
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">以房養老</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">第一銀行 房屋逆向抵押貸款方案</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">第一銀行 房屋逆向抵押貸款方案</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-blue">查看服務</button>
@@ -239,13 +245,13 @@
         <div class="category-card" onClick="{{ openDentist }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-green">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M9 3c-2.5 0-4.5 1.8-4.5 4.5 0 1.2.2 2.1.5 3 .4 1.3.8 2.9 1.2 4.6.4 1.8.9 3.9 1.8 3.9.8 0 1.1-1.1 1.4-2.5.3-1.4.6-3.1 1.6-3.1s1.3 1.7 1.6 3.1c.3 1.4.6 2.5 1.4 2.5.9 0 1.4-2.1 1.8-3.9.4-1.7.8-3.3 1.2-4.6.3-.9.5-1.8.5-3C19.5 4.8 17.5 3 15 3c-1 0-1.6.4-2.2.8-.3.2-.5.3-.8.3s-.5-.1-.8-.3C10.6 3.4 10 3 9 3z"></path>
               </svg>
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">牙齒健康</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">永慶牙醫 植牙、假牙、牙周治療</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">永慶牙醫 植牙、假牙、牙周治療</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-green">查看服務</button>
@@ -254,7 +260,7 @@
         <div class="category-card" onClick="{{ openInheritance }}">
           <div style="display: flex; align-items: center; gap: 16px;">
             <div class="icon-badge icon-badge-blue">
-              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="3" y="8" width="18" height="4" rx="1"></rect>
                 <path d="M12 8v13"></path>
                 <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
@@ -264,7 +270,7 @@
             </div>
             <div style="flex: 1;">
               <h2 style="font-size: 23px; font-weight: 700; margin: 0 0 4px;">資產傳承規劃</h2>
-              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: oklch(0.45 0.02 60);">退休理財與節稅傳承諮詢</p>
+              <p style="font-size: 17px; line-height: 1.5; margin: 0; color: var(--muted);">退休理財與節稅傳承諮詢</p>
             </div>
           </div>
           <button class="cta-btn cta-btn-blue">查看服務</button>
@@ -278,22 +284,22 @@
   <sc-if value="{{ isSeminar }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="長照講座詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-green">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M2 4h6a4 4 0 0 1 4 4v13a3 3 0 0 0-3-3H2z"></path>
                 <path d="M22 4h-6a4 4 0 0 0-4 4v13a3 3 0 0 1 3-3h7z"></path>
               </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">長照講座與樂齡玩具</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         不知道長照資源怎麼找、怎麼申請？讓專業講師用輕鬆有趣的方式，帶您和長輩認識照顧資源，把學習融入生活，從容迎接人生下半場。
       </p>
 
       <section class="service-card">
         <img src="assets/7ymuyouth.jpg" alt="泳沐青春 7YMuYouth 長照講座與樂齡玩具" width="900" height="600" class="service-img">
         <div class="service-card-padded">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">泳沐青春 7YMuYouth</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             樂齡玩具｜長照講師｜教案設計｜多元輔療。結合長照專業與樂齡玩具應用，透過多元課程、互動體驗及健康促進活動，從長照資源認識、服務申請指引到樂齡生活規劃，陪您善用照顧資源。玩出健康、學會照顧，陪你優雅變老，讓每個人生階段都能自在精彩。
           </p>
           <a href="https://lin.ee/ezec15h" target="_blank" rel="noopener noreferrer" class="call-btn">
@@ -314,23 +320,23 @@
   <sc-if value="{{ isNutritionist }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="營養與飲食健康詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 8c-3.5 0-6 2.7-6 6.5S8.5 21 12 21s6-2.8 6-6.5S15.5 8 12 8z"></path>
           <path d="M12 8c0-2 1.2-3.5 3-4"></path>
           <path d="M9 5c1 0 2 .5 2.5 1.5"></path>
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">營養與飲食健康</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         長輩吃得下卻顧不好營養，是肌少症與體重流失的常見主因。營養師陪您找出真正的健康盲點，用專業飲食調整取代盲目節食，簡單吃、也吃得對。
       </p>
 
       <section class="service-card">
         <img src="assets/nutritionist.jpg" alt="商建祥 營養師 陪你好好生活" width="864" height="1821" class="service-img">
         <div class="service-card-padded">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">商建祥 營養師</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             高考營養師、私人教練雙認證，提供對抗肌少症、改善體重流失、簡化飲食準備、營養補充規劃等專屬方案，陪長輩找回好體力。
           </p>
           <a href="https://line.me/R/ti/p/@867gsgld" target="_blank" rel="noopener noreferrer" class="call-btn">
@@ -351,27 +357,27 @@
   <sc-if value="{{ isLingoWave }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="長照溝通詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-green">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 20l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">長照溝通</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         透過 AI 即時翻譯，降低家屬與外籍看護之間的語言隔閡，讓遠距照護更加安心。
       </p>
 
       <section class="service-card service-card-padded">
-        <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+        <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
         <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">LingoWave</h2>
-        <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+        <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
           AI 翻譯 App，協助家庭與外籍看護跨語言溝通。
         </p>
         <div style="display: flex; flex-direction: column; gap: 14px;">
-          <a href="https://apps.apple.com/us/app/lingowave/id6762041755" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 58px; border-radius: 16px; border: none; background: oklch(0.24 0.02 60); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
+          <a href="https://apps.apple.com/us/app/lingowave/id6762041755" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 58px; border-radius: 16px; border: none; background: var(--forest-ink); color: white; font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M16.5 2c.1 1.2-.4 2.4-1.1 3.3-.8.9-2 1.6-3.2 1.5-.1-1.2.5-2.5 1.2-3.3.8-.9 2.1-1.5 3.1-1.5zM20 17.2c-.5 1.2-.8 1.7-1.5 2.7-1 1.4-2.3 3.1-4 3.1-1.5 0-1.9-1-3.9-1s-2.5 1-4 1c-1.7 0-3-1.6-4-3-2.7-3.9-3-8.4-1.3-10.8 1.2-1.7 3-2.7 4.7-2.7 1.7 0 2.8 1 4.2 1 1.4 0 2.2-1 4.2-1 1.5 0 3.1.8 4.3 2.2-3.8 2.1-3.2 7.5.3 8.5z"/></svg>
             下載 iPhone App
           </a>
-          <a href="https://play.google.com/store/apps/details?id=tech.jinno.lingowave" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 58px; border-radius: 16px; border: 2px solid oklch(0.24 0.02 60); background: transparent; color: oklch(0.24 0.02 60); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
+          <a href="https://play.google.com/store/apps/details?id=tech.jinno.lingowave" target="_blank" rel="noopener noreferrer" style="width: 100%; height: 58px; border-radius: 16px; border: 2px solid var(--forest-ink); background: transparent; color: var(--forest-ink); font-size: 18px; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; box-sizing: border-box;">
             <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 6.5l1.8-3.1a.6.6 0 0 0-1-.6l-1.8 3.2a10 10 0 0 0-8 0L6.7 2.8a.6.6 0 1 0-1 .6l1.8 3.1A9 9 0 0 0 3 14h18a9 9 0 0 0-3.5-7.5zM8.5 11.2a1 1 0 1 1 0-2 1 1 0 0 1 0 2zm7 0a1 1 0 1 1 0-2 1 1 0 0 1 0 2zM3 15v4.5A2.5 2.5 0 0 0 5.5 22h.3V15H3zm15.2 0V22h.3a2.5 2.5 0 0 0 2.5-2.5V15h-2.8zM7.8 15v8h8.4v-8H7.8z"/></svg>
             下載 Android App
           </a>
@@ -389,7 +395,7 @@
   <sc-if value="{{ isWorker }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="外勞仲介詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2"></path>
           <circle cx="9" cy="7" r="4"></circle>
           <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
@@ -397,16 +403,16 @@
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">外勞仲介</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         從招募、訓練到引進一條龍服務，協助家庭合法媒合外籍看護與幫傭，減輕照顧人力負擔。
       </p>
 
       <section class="service-card">
         <img src="assets/worker.jpg" alt="長欣利國際人力顧問 外籍看護幫傭媒合" width="900" height="1200" class="service-img">
         <div class="service-card-padded">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">長欣利國際人力顧問</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             旗下四大人力仲介、印尼自有訓練中心客製化培訓，連續 5 年獲勞動部 A 級評鑑，提供看護工、家庭幫傭等合法媒合服務。
           </p>
           <a href="tel:0225994588" class="call-btn">
@@ -427,22 +433,22 @@
   <sc-if value="{{ isEplusHome }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="居家安全監控詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-green">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M3 11.5L12 4l9 7.5"></path>
           <path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"></path>
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">居家安全監控</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         用 AI 智慧監控守護長輩居家安全，即時感知危險、絕不偷看隱私，讓子女安心上班、長輩在家寬心。
       </p>
 
       <section class="service-card">
         <img src="assets/eplushome.jpg" alt="e+home 億加鴻智慧監控" width="768" height="1234" class="service-img">
         <div class="service-card-padded">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">e+home 億加鴻智慧監控</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             AI 影像監控：離床偵測、浴廁看顧、火災偵測，只管危險不看隱私。
           </p>
           <a href="tel:0286932296" class="call-btn">
@@ -463,19 +469,19 @@
   <sc-if value="{{ isInsurance }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="保險規劃詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3l7 3v6c0 5-3.5 8.5-7 9-3.5-.5-7-4-7-9V6l7-3z"></path>
           <path d="M9 12l2 2 4-4"></path>
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">保險規劃</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         及早規劃長期照顧與癌症醫療保障，減輕家庭長照負擔，讓照護旅程更安心。
       </p>
 
       <section class="service-card">
         <div style="padding: 28px 28px 0;">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150);">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest);">精選服務</div>
         </div>
 
         <div style="padding: 14px 28px 0;">
@@ -483,26 +489,26 @@
         </div>
         <img src="assets/insurance-3.jpg" alt="南山人壽區經理 陳映錞 名片" width="900" height="543" class="service-img" style="margin-top: 14px;">
 
-        <div style="height: 1px; background: oklch(0.92 0.01 70); margin: 24px 28px;"></div>
+        <div style="height: 1px; background: var(--line); margin: 24px 28px;"></div>
 
         <div style="padding: 0 28px 0;">
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">南山人壽「輕鬆陪伴」長期照顧健康保險 FLTC</h2>
         </div>
         <img src="assets/insurance-2.jpg" alt="南山人壽 輕鬆陪伴長期照顧健康保險" width="900" height="1229" class="service-img" style="margin-top: 14px;">
         <div style="padding: 20px 28px 0;">
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0;">
             提供長期照顧財務保障，及早規劃、輕鬆陪伴每一段長照旅程。
           </p>
         </div>
 
-        <div style="height: 1px; background: oklch(0.92 0.01 70); margin: 24px 28px;"></div>
+        <div style="height: 1px; background: var(--line); margin: 24px 28px;"></div>
 
         <div style="padding: 0 28px 0;">
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">南山人壽「長青滿溢」防癌健康保險 SC</h2>
         </div>
         <img src="assets/insurance-1.jpg" alt="南山人壽 長青滿溢防癌健康保險" width="900" height="1211" class="service-img" style="margin-top: 14px;">
         <div style="padding: 20px 28px 24px;">
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             提供癌症給付與外溢回饋保障，及早規劃醫療保障。
           </p>
           <a href="tel:0986239528" class="call-btn">
@@ -523,21 +529,21 @@
   <sc-if value="{{ isBeauty }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="熟齡美容保養詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-green">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 2l2.4 6.8L21 11l-6.6 2.2L12 20l-2.4-6.8L3 11l6.6-2.2L12 2z"></path>
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">熟齡美容保養</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         年紀增長，美麗與自信不必退休。專業保養諮詢，讓長輩由內而外更有精神。
       </p>
 
       <section class="service-card">
         <img src="assets/beauty.jpg" alt="韓國 RENE(+)CELL 熟齡保養" width="900" height="1350" class="service-img">
         <div class="service-card-padded">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">韓國 RENE(+)CELL 專業肌膚管理</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             免費保養諮詢與樂齡保養分享，溫和配方呵護熟齡肌膚，重現健康光采。
           </p>
           <a href="tel:0912133879" class="call-btn">
@@ -558,7 +564,7 @@
   <sc-if value="{{ isBank }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="以房養老詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M12 3v18"></path>
           <path d="M5 7h14"></path>
           <path d="M5 7l-3 6a3 3 0 0 0 6 0z"></path>
@@ -566,13 +572,13 @@
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">以房養老</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         透過房屋資產活化，讓退休生活更有保障，安心在家安老。
       </p>
 
       <section class="service-card">
         <div style="padding: 28px 28px 0;">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150);">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest);">精選服務</div>
         </div>
 
         <div style="padding: 14px 28px 0;">
@@ -580,14 +586,14 @@
         </div>
         <img src="assets/bank-2.jpg" alt="第一銀行竹東分行 消金專員 劉佳蓉 名片" width="900" height="506" class="service-img" style="margin-top: 14px;">
 
-        <div style="height: 1px; background: oklch(0.92 0.01 70); margin: 24px 28px;"></div>
+        <div style="height: 1px; background: var(--line); margin: 24px 28px;"></div>
 
         <div style="padding: 0 28px 0;">
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">第一銀行「以房養老」</h2>
         </div>
         <img src="assets/bank.jpg" alt="第一銀行以房養老" width="900" height="1233" class="service-img" style="margin-top: 14px;">
         <div style="padding: 20px 28px 24px;">
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             以持有房屋為擔保按月撥款：年輕時您養它，年老時它養您。
           </p>
           <a href="tel:0355963251,210" class="call-btn">
@@ -608,21 +614,21 @@
   <sc-if value="{{ isDentist }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="牙齒健康詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-green">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 150)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M9 3c-2.5 0-4.5 1.8-4.5 4.5 0 1.2.2 2.1.5 3 .4 1.3.8 2.9 1.2 4.6.4 1.8.9 3.9 1.8 3.9.8 0 1.1-1.1 1.4-2.5.3-1.4.6-3.1 1.6-3.1s1.3 1.7 1.6 3.1c.3 1.4.6 2.5 1.4 2.5.9 0 1.4-2.1 1.8-3.9.4-1.7.8-3.3 1.2-4.6.3-.9.5-1.8.5-3C19.5 4.8 17.5 3 15 3c-1 0-1.6.4-2.2.8-.3.2-.5.3-.8.3s-.5-.1-.8-.3C10.6 3.4 10 3 9 3z"></path>
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">牙齒健康</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         植牙、假牙、牙周治療等專業牙科照護，找回穩固咀嚼力與自信笑容。
       </p>
 
       <section class="service-card">
         <img src="assets/teeth.jpg" alt="永慶牙醫診所" width="900" height="1350" class="service-img">
         <div class="service-card-padded">
-          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+          <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
           <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">永慶牙醫診所</h2>
-          <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+          <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
             全口矯正、牙周專科、微創無痛植牙，找回燦爛笑容與咀嚼力。
           </p>
           <a href="tel:0228817289" class="call-btn">
@@ -643,7 +649,7 @@
   <sc-if value="{{ isInheritance }}" hint-placeholder-val="{{ false }}">
     <main data-screen-label="資產傳承規劃詳情" style="flex: 1; padding: 24px 20px 60px; max-width: 640px; width: 100%; margin: 0 auto;">
       <div class="detail-icon icon-badge-blue">
-        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="oklch(0.4 0.1 230)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="var(--forest)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="8" width="18" height="4" rx="1"></rect>
           <path d="M12 8v13"></path>
           <path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"></path>
@@ -652,14 +658,14 @@
         </svg>
       </div>
       <h1 style="font-size: 32px; font-weight: 900; margin: 0 0 14px;">資產傳承規劃</h1>
-      <p style="font-size: 19px; line-height: 1.8; color: oklch(0.4 0.02 60); margin: 0 0 32px; text-wrap: pretty;">
+      <p style="font-size: 19px; line-height: 1.8; color: var(--muted); margin: 0 0 32px; text-wrap: pretty;">
         手握資產有尊嚴，子女繼承更和諧。專為長輩打造的退休理財與節稅傳承諮詢，讓您的資產給得安心，下一代拿得感恩。
       </p>
 
       <section class="service-card service-card-padded">
-        <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: oklch(0.5 0.09 150); margin-bottom: 10px;">精選服務</div>
+        <div style="font-size: 14px; font-weight: 700; letter-spacing: 0.04em; color: var(--forest); margin-bottom: 10px;">精選服務</div>
         <h2 style="font-size: 26px; font-weight: 800; margin: 0 0 10px;">資產傳承專家 洪睿宸</h2>
-        <p style="font-size: 18px; line-height: 1.7; color: oklch(0.4 0.02 60); margin: 0 0 24px;">
+        <p style="font-size: 18px; line-height: 1.7; color: var(--muted); margin: 0 0 24px;">
           退休理財與節稅傳承諮詢，協助長輩安心規劃資產、和諧交棒給下一代。
         </p>
         <a href="tel:0987323419" class="call-btn">
